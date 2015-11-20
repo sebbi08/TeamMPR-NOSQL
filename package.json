@@ -1,0 +1,22 @@
+{
+  "name": "nosqlteammpr",
+  "version": "1.0.0",
+  "description": "The NO SQL Projekt for Team MPR",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sebbi08/TeamMPR-NOSQL.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sebbi08/TeamMPR-NOSQL/issues"
+  },
+  "homepage": "https://github.com/sebbi08/TeamMPR-NOSQL#readme",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
