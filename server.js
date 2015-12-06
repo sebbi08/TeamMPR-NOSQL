@@ -5,10 +5,13 @@
  */
 
 var http = require('http');
+//var bodyParser = require('body-parser');
 var app = require("./app/app");
 
 var port = 8080;
 app.set('port', port);
+//app.use(bodyParser.json());
+
 
 /**
  * Create HTTP server.
