@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="./javascript/angular.min.js"></script>
-    <script src="javascript/angularapp.js"></script>
+    <script src="javascript/fusballApp.js"></script>
+    <script src="javascript/fussballController.js"></script>
     <link rel="stylesheet" href="./css/bootstrap.min.css"/>
 
 </head>
-<body ng-app="FusballApp">
-    <p>1 + 2 = {{ 1 + 2 }}</p>
+<body ng-app="FusballApp" ng-controller="LeagueController">
+    <p>{{ data }}</p>
 </body>
 </html>

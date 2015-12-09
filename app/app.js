@@ -1,16 +1,15 @@
-/**
- * Created by sebastian on 20.11.15.
- */
 
 var express = require("express");
 var app = express();
-var bodyParser = require('body-parser');
-app.use(bodyParser.json());
 
-var arangojs = require('arangojs');
-var db = arangojs();
+var bodyParser = require('body-parser');
+
+var db = require('arangojs')();
 var footballDB = db.useDatabase('FBWebApp');
 
+
+
+app.use(bodyParser.json());
 
 app.get("/clubs", function (req, res) {
     var clubs = footballDB.collection('Club');
