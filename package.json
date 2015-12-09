@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/sebbi08/TeamMPR-NOSQL#readme",
   "dependencies": {
+    "arangojs": "4.2.1",
+    "body-parser": "1.14.1",
     "express": "^4.13.3"
   }
 }

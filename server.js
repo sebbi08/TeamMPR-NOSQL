@@ -10,10 +10,11 @@ var express = require("express");
 
 //Static Routes for Public folder
 app.use('/', express.static(__dirname + '/public'));
-console.log(__dirname + '/public');
 
 var port = 8080;
 app.set('port', port);
+//app.use(bodyParser.json());
+
 
 /**
  * Create HTTP server.
