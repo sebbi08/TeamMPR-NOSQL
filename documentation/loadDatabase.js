@@ -1,5 +1,5 @@
-var db = require('arangojs')();
-var systemdb = db.useDatabase('_system');
+var db = require('monk')('localhost/FBWebApp');
+
 systemdb.dropDatabase("FBWebApp").then(function(){
     createDatabase();
 },function(err){
@@ -16,12 +16,33 @@ function createDatabase(){
         var league = footballDB.collection("League");
         var match = footballDB.collection("Match");
         var player = footballDB.collection("Player");
+        var clubsInLeague = footballDB.edgeCollection("clubsInLeague");
+        var creationsPromises = [];
 
 
-        league.create().then(loadLeagues(league));
-        match.create().then(createMatchs(match,league));
-        club.create().then(loadClubs(club,league,match));
-        player.create().then(loadPlayers(player,club));
+        var leaguePromis = league.create();
+        creationsPromises.push(leaguePromis);
+        leaguePromis.then(function(){
+            creationsPromises.push(loadLeagues(league));
+        });
+
+        var clubPromis = club.create();
+        creationsPromises.push(clubPromis);
+        clubPromis.then(function(){
+            creationsPromises.push(loadClubs(club,league));
+        });
+
+        var playerPromis = player.create();
+        creationsPromises.push(playerPromis);
+        playerPromis.then(function(){
+            creationsPromises.push(loadPlayers(player,club));
+        });
+
+        Promise.all(creationsPromises).then(function(){
+            match.create().then(createMatchs(match,league,club));
+        });
+
+
 
     },function(err){
         console.log(err)
@@ -47,11 +68,13 @@ function loadLeagues(leagueCollection) {
 
 function loadClubs(clubCollection,leagueCollection,matchCollection){
     var clubJson = require("./clubs.json");
+    var finishCounter = 0;
     clubJson.forEach(function(club){
         var leagueId = club.wettbewerbsId;
         var league = leagueId.substring(leagueId.length - 1);
         league = parseInt(league);
         if(league < 3){
+            finishCounter++;
             var databaseClub = {
                 name : club.langschreibweise,
                 shortName : club.dreiBuchstabenCode,

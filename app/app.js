@@ -11,6 +11,11 @@ var footballDB = db.useDatabase('FBWebApp');
 
 app.use(bodyParser.json());
 
+app.all("/*",function(req,res,next){
+    //calculateMatches();
+    next()
+});
+
 app.get("/clubs", function (req, res) {
     var clubs = footballDB.collection('Club');
     clubs.all().then(function (curser) {
