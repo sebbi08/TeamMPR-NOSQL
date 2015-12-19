@@ -2,14 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <script src="./javascript/angular.min.js"></script>
+    <title>Fusball Tabelle</title>
+    <script src="javascript/jquery-2.1.4.js"></script>
+    <script src="javascript/angular.js"></script>
+    <script src="javascript/angular-route.js"></script>
     <script src="javascript/fusballApp.js"></script>
     <script src="javascript/fussballController.js"></script>
+    <script src="javascript/fusballRoutes.js"></script>
     <link rel="stylesheet" href="./css/bootstrap.min.css"/>
 
 </head>
-<body ng-app="FusballApp" ng-controller="LeagueController">
-    <p>{{ data }}</p>
+<body ng-app="FusballApp">
+<nav class="navbar navbar-default" ng-controller="HeaderController">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Fussball App</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li ng-repeat="rout in routes" ng-class="{active : activeRoute(rout)}">
+                    <a href="#{{rout.path}}">{{rout.name}}</a>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div ng-view></div>
 </body>
 </html>
