@@ -1,0 +1,402 @@
+[{
+  "spiel1" : { "mannschaft1" : 8 , "mannschaft2" : 1 },
+  "spiel2" : { "mannschaft1" : 9 , "mannschaft2" : 14 },
+  "spiel3" : { "mannschaft1" : 2 , "mannschaft2" : 12 },
+  "spiel4" :{ "mannschaft1" : 3 , "mannschaft2" : 16 },
+  "spiel5" :{ "mannschaft1" : 6 , "mannschaft2" : 10 },
+  "spiel6" :{ "mannschaft1" : 4 , "mannschaft2" : 18 },
+  "spiel7" :{ "mannschaft1" : 17 , "mannschaft2" : 7 },
+  "spiel8" :{ "mannschaft1" : 13 , "mannschaft2" : 15 },
+  "spiel9" :{ "mannschaft1" : 5 , "mannschaft2" : 11 }
+},
+{
+  "spiel1" :{ "mannschaft1" : 9 , "mannschaft2" : 8 },
+  "spiel2" :{ "mannschaft1" : 12 , "mannschaft2" : 1 },
+  "spiel3" :{ "mannschaft1" : 14 , "mannschaft2" : 3 },
+  "spiel4" :{ "mannschaft1" : 10 , "mannschaft2" : 2 },
+  "spiel5" :{ "mannschaft1" : 16 , "mannschaft2" : 4 },
+  "spiel6" :{ "mannschaft1" : 7 , "mannschaft2" : 6 },
+  "spiel7" :{ "mannschaft1" : 18 , "mannschaft2" : 13 },
+  "spiel8" :{ "mannschaft1" : 11 , "mannschaft2" : 17 },
+  "spiel9" :{ "mannschaft1" : 15 , "mannschaft2" : 5 }
+},
+{
+  "spiel1" :{ "mannschaft1" : 8 , "mannschaft2" : 12 },
+  "spiel2" :{ "mannschaft1" : 3 , "mannschaft2" : 9 },
+  "spiel3" :{ "mannschaft1" : 1 , "mannschaft2" : 10 },
+  "spiel4" :{ "mannschaft1" : 4 , "mannschaft2" : 14 },
+  "spiel5" :{ "mannschaft1" : 2 , "mannschaft2" : 7 },
+  "spiel6" :{ "mannschaft1" : 13 , "mannschaft2" : 16 },
+  "spiel7" :{ "mannschaft1" : 6 , "mannschaft2" : 11 },
+  "spiel8" :{ "mannschaft1" : 5 , "mannschaft2" : 18 },
+  "spiel9" :{ "mannschaft1" : 17 , "mannschaft2" : 15 }
+},
+{
+  "spiel1" :{ "mannschaft1" : 3 , "mannschaft2" : 8 },
+  "spiel2" :{ "mannschaft1" : 10 , "mannschaft2" : 12 },
+  "spiel3" :{ "mannschaft1" : 9 , "mannschaft2" : 4 },
+  "spiel4" :{ "mannschaft1" : 7 , "mannschaft2" : 1 },
+  "spiel5" :{ "mannschaft1" : 14 , "mannschaft2" : 13 },
+  "spiel6" :{ "mannschaft1" : 11 , "mannschaft2" : 2 },
+  "spiel7" :{ "mannschaft1" : 16 , "mannschaft2" : 5 },
+  "spiel8" :{ "mannschaft1" : 15 , "mannschaft2" : 6 },
+  "spiel9" :{ "mannschaft1" : 18 , "mannschaft2" : 17 }
+},
+{
+  "spiel1" :{ "mannschaft1" : 8 , "mannschaft2" : 10 },
+  "spiel2" :{ "mannschaft1" : 4 , "mannschaft2" : 3 },
+  "spiel3" :{ "mannschaft1" : 12 , "mannschaft2" : 7 },
+  "spiel4" :{ "mannschaft1" : 13 , "mannschaft2" : 9 },
+  "spiel5" :{ "mannschaft1" : 1 , "mannschaft2" : 11 },
+  "spiel6" :{ "mannschaft1" : 5 , "mannschaft2" : 14 },
+  "spiel7" :{ "mannschaft1" : 2 , "mannschaft2" : 15 },
+  "spiel8" :{ "mannschaft1" : 17 , "mannschaft2" : 16 },
+  "spiel9" :{ "mannschaft1" : 6 , "mannschaft2" : 18 }
+},
+{
+  "spiel1" :{ "mannschaft1" : 4 , "mannschaft2" : 8 },
+  "spiel2" :{ "mannschaft1" : 7 , "mannschaft2" : 10 },
+  "spiel3" :{ "mannschaft1" : 3 , "mannschaft2" : 13 },
+  "spiel4" :{ "mannschaft1" : 11 , "mannschaft2" : 12 },
+  "spiel5" :{ "mannschaft1" : 9 , "mannschaft2" : 5 },
+  "spiel6" :{ "mannschaft1" : 15 , "mannschaft2" : 1 },
+  "spiel7" :{ "mannschaft1" : 14 , "mannschaft2" : 17 },
+  "spiel8" :{ "mannschaft1" : 18 , "mannschaft2" : 2 },
+  "spiel9" :{ "mannschaft1" : 16 , "mannschaft2" : 6 }
+},
+{
+
+  "spiel1" :{ "mannschaft1" : 8 , "mannschaft2" : 7 },
+  "spiel2" :{ "mannschaft1" : 13 , "mannschaft2" : 4 },
+  "spiel3" :{ "mannschaft1" : 10 , "mannschaft2" : 11 },
+  "spiel4" :{ "mannschaft1" : 5 , "mannschaft2" : 3 },
+  "spiel5" :{ "mannschaft1" : 12 , "mannschaft2" : 15 },
+  "spiel6" :{ "mannschaft1" : 17 , "mannschaft2" : 9 },
+  "spiel7" :{ "mannschaft1" : 1 , "mannschaft2" : 18 },
+  "spiel8" :{ "mannschaft1" : 6 , "mannschaft2" : 14 },
+  "spiel9" :{ "mannschaft1" : 2 , "mannschaft2" : 16 }
+},
+{
+
+  "spiel1" :{ "mannschaft1" : 13 , "mannschaft2" : 8 },
+  "spiel2" :{ "mannschaft1" : 11 , "mannschaft2" : 7 },
+  "spiel3" :{ "mannschaft1" : 4 , "mannschaft2" : 5 },
+  "spiel4" :{ "mannschaft1" : 15 , "mannschaft2" : 10 },
+  "spiel5" :{ "mannschaft1" : 3 , "mannschaft2" : 17 },
+  "spiel6" :{ "mannschaft1" : 18 , "mannschaft2" : 12 },
+  "spiel7" :{ "mannschaft1" : 9 , "mannschaft2" : 6 },
+  "spiel8" :{ "mannschaft1" : 16 , "mannschaft2" : 1 },
+  "spiel9" :{ "mannschaft1" : 14 , "mannschaft2" : 2 }
+},
+{
+
+  "spiel1" :{ "mannschaft1" : 8 , "mannschaft2" : 11 },
+  "spiel2" :{ "mannschaft1" : 5 , "mannschaft2" : 13 },
+  "spiel3" :{ "mannschaft1" : 7 , "mannschaft2" : 15 },
+  "spiel4" :{ "mannschaft1" : 17 , "mannschaft2" : 4 },
+  "spiel5" :{ "mannschaft1" : 10 , "mannschaft2" : 18 },
+  "spiel6" :{ "mannschaft1" : 6 , "mannschaft2" : 3 },
+  "spiel7" :{ "mannschaft1" : 12 , "mannschaft2" : 16 },
+  "spiel8" :{ "mannschaft1" : 2 , "mannschaft2" : 9 },
+  "spiel9" :{ "mannschaft1" : 1 , "mannschaft2" : 14 }
+},
+{
+
+  "spiel1" :{ "mannschaft1" : 5 , "mannschaft2" : 8 },
+  "spiel2" :{ "mannschaft1" : 15 , "mannschaft2" : 11 },
+  "spiel3" :{ "mannschaft1" : 13 , "mannschaft2" : 17 },
+  "spiel4" :{ "mannschaft1" : 18 , "mannschaft2" : 7 },
+  "spiel5" :{ "mannschaft1" : 4 , "mannschaft2" : 6 },
+  "spiel6" :{ "mannschaft1" : 16 , "mannschaft2" : 10 },
+  "spiel7" :{ "mannschaft1" : 3 , "mannschaft2" : 2 },
+  "spiel8" :{ "mannschaft1" : 14 , "mannschaft2" : 12 },
+  "spiel9" :{ "mannschaft1" : 9 , "mannschaft2" : 1 }
+},
+{
+
+  "spiel1" :{ "mannschaft1" : 8 , "mannschaft2" : 15 },
+  "spiel2" :{ "mannschaft1" : 17 , "mannschaft2" : 5 },
+  "spiel3" :{ "mannschaft1" : 11 , "mannschaft2" : 18 },
+  "spiel4" :{ "mannschaft1" : 6 , "mannschaft2" : 13 },
+  "spiel5" :{ "mannschaft1" : 7 , "mannschaft2" : 16 },
+  "spiel6" :{ "mannschaft1" : 2 , "mannschaft2" : 4 },
+  "spiel7" :{ "mannschaft1" : 10 , "mannschaft2" : 14 },
+  "spiel8" :{ "mannschaft1" : 1 , "mannschaft2" : 3 },
+  "spiel9" :{ "mannschaft1" : 12 , "mannschaft2" : 9 }
+},
+{
+
+  "spiel1" :{ "mannschaft1" : 17 , "mannschaft2" : 8 },
+  "spiel2" :{ "mannschaft1" : 18 , "mannschaft2" : 15 },
+  "spiel3" :{ "mannschaft1" : 5 , "mannschaft2" : 6 },
+  "spiel4" :{ "mannschaft1" : 16 , "mannschaft2" : 11 },
+  "spiel5" :{ "mannschaft1" : 13 , "mannschaft2" : 2 },
+  "spiel6" :{ "mannschaft1" : 14 , "mannschaft2" : 7 },
+  "spiel7" :{ "mannschaft1" : 4 , "mannschaft2" : 1 },
+  "spiel8" :{ "mannschaft1" : 9 , "mannschaft2" : 10 },
+  "spiel9" :{ "mannschaft1" : 3 , "mannschaft2" : 12 }
+},
+{
+
+  "spiel1" :{ "mannschaft1" : 8 , "mannschaft2" : 18 },
+  "spiel2" :{ "mannschaft1" : 6 , "mannschaft2" : 17 },
+  "spiel3" :{ "mannschaft1" : 15 , "mannschaft2" : 16 },
+  "spiel4" :{ "mannschaft1" : 2 , "mannschaft2" : 5 },
+  "spiel5" :{ "mannschaft1" : 11 , "mannschaft2" : 14 },
+  "spiel6" :{ "mannschaft1" : 1 , "mannschaft2" : 13 },
+  "spiel7" :{ "mannschaft1" : 7 , "mannschaft2" : 9 },
+  "spiel8" :{ "mannschaft1" : 12 , "mannschaft2" : 4 },
+  "spiel9" :{ "mannschaft1" : 10 , "mannschaft2" : 3 }
+},
+{
+
+  "spiel1" :{ "mannschaft1" : 6 , "mannschaft2" : 8 },
+  "spiel2" :{ "mannschaft1" : 16 , "mannschaft2" : 18 },
+  "spiel3" :{ "mannschaft1" : 17 , "mannschaft2" : 2 },
+  "spiel4" :{ "mannschaft1" : 14 , "mannschaft2" : 15 },
+  "spiel5" :{ "mannschaft1" : 5 , "mannschaft2" : 1 },
+  "spiel6" :{ "mannschaft1" : 9 , "mannschaft2" : 11 },
+  "spiel7" :{ "mannschaft1" : 13 , "mannschaft2" : 12 },
+  "spiel8" :{ "mannschaft1" : 3 , "mannschaft2" : 7 },
+  "spiel9" :{ "mannschaft1" : 4 , "mannschaft2" : 10 }
+},
+{
+
+  "spiel1" :{ "mannschaft1" : 8 , "mannschaft2" : 16 },
+  "spiel2" :{ "mannschaft1" : 2 , "mannschaft2" : 6 },
+  "spiel3" :{ "mannschaft1" : 18 , "mannschaft2" : 14 },
+  "spiel4" :{ "mannschaft1" : 1 , "mannschaft2" : 17 },
+  "spiel5" :{ "mannschaft1" : 15 , "mannschaft2" : 9 },
+  "spiel6" :{ "mannschaft1" : 12 , "mannschaft2" : 5 },
+  "spiel7" :{ "mannschaft1" : 11 , "mannschaft2" : 3 },
+  "spiel8" :{ "mannschaft1" : 10 , "mannschaft2" : 13 },
+  "spiel9" :{ "mannschaft1" : 7 , "mannschaft2" : 4 }
+},
+{
+
+  "spiel1" :{ "mannschaft1" : 2 , "mannschaft2" : 8 },
+  "spiel2" :{ "mannschaft1" : 14 , "mannschaft2" : 16 },
+  "spiel3" :{ "mannschaft1" : 6 , "mannschaft2" : 1 },
+  "spiel4" :{ "mannschaft1" : 9 , "mannschaft2" : 18 },
+  "spiel5" :{ "mannschaft1" : 17 , "mannschaft2" : 12 },
+  "spiel6" :{ "mannschaft1" : 3 , "mannschaft2" : 15 },
+  "spiel7" :{ "mannschaft1" : 5 , "mannschaft2" : 10 },
+  "spiel8" :{ "mannschaft1" : 4 , "mannschaft2" : 11 },
+  "spiel9" :{ "mannschaft1" : 13 , "mannschaft2" : 7 }
+},
+{
+
+  "spiel1" :{ "mannschaft1" : 8 , "mannschaft2" : 14 },
+  "spiel2" :{ "mannschaft1" : 1 , "mannschaft2" : 2 },
+  "spiel3" :{ "mannschaft1" : 16 , "mannschaft2" : 9 },
+  "spiel4" :{ "mannschaft1" : 12 , "mannschaft2" : 6 },
+  "spiel5" :{ "mannschaft1" : 18 , "mannschaft2" : 3 },
+  "spiel6" :{ "mannschaft1" : 10 , "mannschaft2" : 17 },
+  "spiel7" :{ "mannschaft1" : 15 , "mannschaft2" : 4 },
+  "spiel8" :{ "mannschaft1" : 7 , "mannschaft2" : 5 },
+  "spiel9" :{ "mannschaft1" : 11 , "mannschaft2" : 13 }
+},
+{
+
+  "spiel1" :{ "mannschaft1" : 1 , "mannschaft2" : 8 },
+  "spiel2" :{ "mannschaft1" : 14 , "mannschaft2" : 9 },
+  "spiel3" :{ "mannschaft1" : 12 , "mannschaft2" : 2 },
+  "spiel4" :{ "mannschaft1" : 16 , "mannschaft2" : 3 },
+  "spiel5" :{ "mannschaft1" : 10 , "mannschaft2" : 6 },
+  "spiel6" :{ "mannschaft1" : 18 , "mannschaft2" : 4 },
+  "spiel7" :{ "mannschaft1" : 7 , "mannschaft2" : 17 },
+  "spiel8" :{ "mannschaft1" : 15 , "mannschaft2" : 13 },
+  "spiel9" :{ "mannschaft1" : 11 , "mannschaft2" : 5 }
+},
+{
+
+  "spiel1" :{ "mannschaft1" : 8 , "mannschaft2" : 9 },
+  "spiel2" :{ "mannschaft1" : 1 , "mannschaft2" : 12 },
+  "spiel3" :{ "mannschaft1" : 3 , "mannschaft2" : 14 },
+  "spiel4" :{ "mannschaft1" : 2 , "mannschaft2" : 10 },
+  "spiel5" :{ "mannschaft1" : 4 , "mannschaft2" : 16 },
+  "spiel6" :{ "mannschaft1" : 6 , "mannschaft2" : 7 },
+  "spiel7" :{ "mannschaft1" : 13 , "mannschaft2" : 18 },
+  "spiel8" :{ "mannschaft1" : 17 , "mannschaft2" : 11 },
+  "spiel9" :{ "mannschaft1" : 5 , "mannschaft2" : 15 }
+},
+{
+
+  "spiel1" :{ "mannschaft1" : 12 , "mannschaft2" : 8 },
+  "spiel2" :{ "mannschaft1" : 9 , "mannschaft2" : 3 },
+  "spiel3" :{ "mannschaft1" : 10 , "mannschaft2" : 1 },
+  "spiel4" :{ "mannschaft1" : 14 , "mannschaft2" : 4 },
+  "spiel5" :{ "mannschaft1" : 7 , "mannschaft2" : 2 },
+  "spiel6" :{ "mannschaft1" : 16 , "mannschaft2" : 13 },
+  "spiel7" :{ "mannschaft1" : 11 , "mannschaft2" : 6 },
+  "spiel8" :{ "mannschaft1" : 18 , "mannschaft2" : 5 },
+  "spiel9" :{ "mannschaft1" : 15 , "mannschaft2" : 17 }
+},
+{
+
+  "spiel1" :{ "mannschaft1" : 8 , "mannschaft2" : 3 },
+  "spiel2" :{ "mannschaft1" : 12 , "mannschaft2" : 10 },
+  "spiel3" :{ "mannschaft1" : 4 , "mannschaft2" : 9 },
+  "spiel4" :{ "mannschaft1" : 1 , "mannschaft2" : 7 },
+  "spiel5" :{ "mannschaft1" : 13 , "mannschaft2" : 14 },
+  "spiel6" :{ "mannschaft1" : 2 , "mannschaft2" : 11 },
+  "spiel7" :{ "mannschaft1" : 5 , "mannschaft2" : 16 },
+  "spiel8" :{ "mannschaft1" : 6 , "mannschaft2" : 15 },
+  "spiel9" :{ "mannschaft1" : 17 , "mannschaft2" : 18 }
+},
+{
+
+  "spiel1" :{ "mannschaft1" : 10 , "mannschaft2" : 8 },
+  "spiel2" :{ "mannschaft1" : 3 , "mannschaft2" : 4 },
+  "spiel3" :{ "mannschaft1" : 7 , "mannschaft2" : 12 },
+  "spiel4" :{ "mannschaft1" : 9 , "mannschaft2" : 13 },
+  "spiel5" :{ "mannschaft1" : 11 , "mannschaft2" : 1 },
+  "spiel6" :{ "mannschaft1" : 14 , "mannschaft2" : 5 },
+  "spiel7" :{ "mannschaft1" : 15 , "mannschaft2" : 2 },
+  "spiel8" :{ "mannschaft1" : 16 , "mannschaft2" : 17 },
+  "spiel9" :{ "mannschaft1" : 18 , "mannschaft2" : 6 }
+},
+{
+
+  "spiel1" :{ "mannschaft1" : 8 , "mannschaft2" : 4 },
+  "spiel2" :{ "mannschaft1" : 10 , "mannschaft2" : 7 },
+  "spiel3" :{ "mannschaft1" : 13 , "mannschaft2" : 3 },
+  "spiel4" :{ "mannschaft1" : 12 , "mannschaft2" : 11 },
+  "spiel5" :{ "mannschaft1" : 5 , "mannschaft2" : 9 },
+  "spiel6" :{ "mannschaft1" : 1 , "mannschaft2" : 15 },
+  "spiel7" :{ "mannschaft1" : 17 , "mannschaft2" : 14 },
+  "spiel8" :{ "mannschaft1" : 2 , "mannschaft2" : 18 },
+  "spiel9" :{ "mannschaft1" : 6 , "mannschaft2" : 16 }
+},
+{
+
+  "spiel1" :{ "mannschaft1" : 7 , "mannschaft2" : 8 },
+  "spiel2" :{ "mannschaft1" : 4 , "mannschaft2" : 13 },
+  "spiel3" :{ "mannschaft1" : 11 , "mannschaft2" : 10 },
+  "spiel4" :{ "mannschaft1" : 3 , "mannschaft2" : 5 },
+  "spiel5" :{ "mannschaft1" : 15 , "mannschaft2" : 12 },
+  "spiel6" :{ "mannschaft1" : 9 , "mannschaft2" : 17 },
+  "spiel7" :{ "mannschaft1" : 18 , "mannschaft2" : 1 },
+  "spiel8" :{ "mannschaft1" : 14 , "mannschaft2" : 6 },
+  "spiel9" :{ "mannschaft1" : 16 , "mannschaft2" : 2 }
+},
+{
+
+  "spiel1" :{ "mannschaft1" : 8 , "mannschaft2" : 13 },
+  "spiel2" :{ "mannschaft1" : 7 , "mannschaft2" : 11 },
+  "spiel3" :{ "mannschaft1" : 5 , "mannschaft2" : 4 },
+  "spiel4" :{ "mannschaft1" : 10 , "mannschaft2" : 15 },
+  "spiel5" :{ "mannschaft1" : 17 , "mannschaft2" : 3 },
+  "spiel6" :{ "mannschaft1" : 12 , "mannschaft2" : 18 },
+  "spiel7" :{ "mannschaft1" : 6 , "mannschaft2" : 9 },
+  "spiel8" :{ "mannschaft1" : 1 , "mannschaft2" : 16 },
+  "spiel9" :{ "mannschaft1" : 2 , "mannschaft2" : 14 }
+},
+{
+
+  "spiel1" :{ "mannschaft1" : 11 , "mannschaft2" : 8 },
+  "spiel2" :{ "mannschaft1" : 13 , "mannschaft2" : 5 },
+  "spiel3" :{ "mannschaft1" : 15 , "mannschaft2" : 7 },
+  "spiel4" :{ "mannschaft1" : 4 , "mannschaft2" : 17 },
+  "spiel5" :{ "mannschaft1" : 18 , "mannschaft2" : 10 },
+  "spiel6" :{ "mannschaft1" : 3 , "mannschaft2" : 6 },
+  "spiel7" :{ "mannschaft1" : 16 , "mannschaft2" : 12 },
+  "spiel8" :{ "mannschaft1" : 9 , "mannschaft2" : 2 },
+  "spiel9" :{ "mannschaft1" : 14 , "mannschaft2" : 1 }
+},
+{
+
+  "spiel1" :{ "mannschaft1" : 8 , "mannschaft2" : 5 },
+  "spiel2" :{ "mannschaft1" : 11 , "mannschaft2" : 15 },
+  "spiel3" :{ "mannschaft1" : 17 , "mannschaft2" : 13 },
+  "spiel4" :{ "mannschaft1" : 7 , "mannschaft2" : 18 },
+  "spiel5" :{ "mannschaft1" : 6 , "mannschaft2" : 4 },
+  "spiel6" :{ "mannschaft1" : 10 , "mannschaft2" : 16 },
+  "spiel7" :{ "mannschaft1" : 2 , "mannschaft2" : 3 },
+  "spiel8" :{ "mannschaft1" : 12 , "mannschaft2" : 14 },
+  "spiel9" :{ "mannschaft1" : 1 , "mannschaft2" : 9 }
+},
+{
+
+  "spiel1" :{ "mannschaft1" : 15 , "mannschaft2" : 8 },
+  "spiel2" :{ "mannschaft1" : 5 , "mannschaft2" : 17 },
+  "spiel3" :{ "mannschaft1" : 18 , "mannschaft2" : 11 },
+  "spiel4" :{ "mannschaft1" : 13 , "mannschaft2" : 6 },
+  "spiel5" :{ "mannschaft1" : 16 , "mannschaft2" : 7 },
+  "spiel6" :{ "mannschaft1" : 4 , "mannschaft2" : 2 },
+  "spiel7" :{ "mannschaft1" : 14 , "mannschaft2" : 10 },
+  "spiel8" :{ "mannschaft1" : 3 , "mannschaft2" : 1 },
+  "spiel9" :{ "mannschaft1" : 9 , "mannschaft2" : 12 }
+},
+{
+
+  "spiel1" :{ "mannschaft1" : 8 , "mannschaft2" : 17 },
+  "spiel2" :{ "mannschaft1" : 15 , "mannschaft2" : 18 },
+  "spiel3" :{ "mannschaft1" : 6 , "mannschaft2" : 5 },
+  "spiel4" :{ "mannschaft1" : 11 , "mannschaft2" : 16 },
+  "spiel5" :{ "mannschaft1" : 2 , "mannschaft2" : 13 },
+  "spiel6" :{ "mannschaft1" : 7 , "mannschaft2" : 14 },
+  "spiel7" :{ "mannschaft1" : 1 , "mannschaft2" : 4 },
+  "spiel8" :{ "mannschaft1" : 10 , "mannschaft2" : 9 },
+  "spiel9" :{ "mannschaft1" : 12 , "mannschaft2" : 3 }
+},
+{
+
+  "spiel1" :{ "mannschaft1" : 18 , "mannschaft2" : 8 },
+  "spiel2" :{ "mannschaft1" : 17 , "mannschaft2" : 6 },
+  "spiel3" :{ "mannschaft1" : 16 , "mannschaft2" : 15 },
+  "spiel4" :{ "mannschaft1" : 5 , "mannschaft2" : 2 },
+  "spiel5" :{ "mannschaft1" : 14 , "mannschaft2" : 11 },
+  "spiel6" :{ "mannschaft1" : 13 , "mannschaft2" : 1 },
+  "spiel7" :{ "mannschaft1" : 9 , "mannschaft2" : 7 },
+  "spiel8" :{ "mannschaft1" : 4 , "mannschaft2" : 12 },
+  "spiel9" :{ "mannschaft1" : 3 , "mannschaft2" : 10 }
+},
+{
+
+  "spiel1" :{ "mannschaft1" : 8 , "mannschaft2" : 6 },
+  "spiel2" :{ "mannschaft1" : 18 , "mannschaft2" : 16 },
+  "spiel3" :{ "mannschaft1" : 2 , "mannschaft2" : 17 },
+  "spiel4" :{ "mannschaft1" : 15 , "mannschaft2" : 14 },
+  "spiel5" :{ "mannschaft1" : 1 , "mannschaft2" : 5 },
+  "spiel6" :{ "mannschaft1" : 11 , "mannschaft2" : 9 },
+  "spiel7" :{ "mannschaft1" : 12 , "mannschaft2" : 13 },
+  "spiel8" :{ "mannschaft1" : 7 , "mannschaft2" : 3 },
+  "spiel9" :{ "mannschaft1" : 10 , "mannschaft2" : 4 }
+},
+{
+
+  "spiel1" :{ "mannschaft1" : 16 , "mannschaft2" : 8 },
+  "spiel2" :{ "mannschaft1" : 6 , "mannschaft2" : 2 },
+  "spiel3" :{ "mannschaft1" : 14 , "mannschaft2" : 18 },
+  "spiel4" :{ "mannschaft1" : 17 , "mannschaft2" : 1 },
+  "spiel5" :{ "mannschaft1" : 9 , "mannschaft2" : 15 },
+  "spiel6" :{ "mannschaft1" : 5 , "mannschaft2" : 12 },
+  "spiel7" :{ "mannschaft1" : 3 , "mannschaft2" : 11 },
+  "spiel8" :{ "mannschaft1" : 13 , "mannschaft2" : 10 },
+  "spiel9" :{ "mannschaft1" : 4 , "mannschaft2" : 7 }
+},
+{
+
+  "spiel1" :{ "mannschaft1" : 8 , "mannschaft2" : 2 },
+  "spiel2" :{ "mannschaft1" : 16 , "mannschaft2" : 14 },
+  "spiel3" :{ "mannschaft1" : 1 , "mannschaft2" : 6 },
+  "spiel4" :{ "mannschaft1" : 18 , "mannschaft2" : 9 },
+  "spiel5" :{ "mannschaft1" : 12 , "mannschaft2" : 17 },
+  "spiel6" :{ "mannschaft1" : 15 , "mannschaft2" : 3 },
+  "spiel7" :{ "mannschaft1" : 10 , "mannschaft2" : 5 },
+  "spiel8" :{ "mannschaft1" : 11 , "mannschaft2" : 4 },
+  "spiel9" :{ "mannschaft1" : 7 , "mannschaft2" : 13 }
+},
+{
+
+  "spiel1" :{ "mannschaft1" : 14 , "mannschaft2" : 8 },
+  "spiel2" :{ "mannschaft1" : 2 , "mannschaft2" : 1 },
+  "spiel3" :{ "mannschaft1" : 9 , "mannschaft2" : 16 },
+  "spiel4" :{ "mannschaft1" : 6 , "mannschaft2" : 12 },
+  "spiel5" :{ "mannschaft1" : 3 , "mannschaft2" : 18 },
+  "spiel6" :{ "mannschaft1" : 17 , "mannschaft2" : 10 },
+  "spiel7" :{ "mannschaft1" : 4 , "mannschaft2" : 15 },
+  "spiel8" :{ "mannschaft1" : 5 , "mannschaft2" : 7 },
+  "spiel9" :{ "mannschaft1" : 13 , "mannschaft2" : 11 }
+}]

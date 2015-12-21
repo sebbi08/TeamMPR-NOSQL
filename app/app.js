@@ -31,7 +31,7 @@ app.get("/clubs", function (req, res) {
 
 app.get("/clubs/league/:id", function (req, res) {
     var clubCollection = db.get("Club");
-    clubCollection.find({league : new mongo.ObjectID(req.params.id)}, {}, function (err, data) {
+    clubCollection.find({league : parseInt(req.params.id)}, {}, function (err, data) {
         if (err) {
             console.log(err);
         } else {
@@ -66,6 +66,17 @@ app.get("/players", function (req, res) {
 app.get("/matches", function (req, res) {
     var collection = db.get("Matche");
     collection.find({}, {}, function (err, data) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(data);
+        }
+    });
+});
+
+app.get("/matches/club/:id", function(req,res){
+    var collection = db.get("Match");
+    collection.find({ $or: [ { "homeClub": new mongo.ObjectID(req.params.id) }, { "guestClub": new mongo.ObjectID(req.params.id) } ] }, {}, function (err, data) {
         if (err) {
             console.log(err);
         } else {

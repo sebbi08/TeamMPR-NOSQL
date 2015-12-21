@@ -1,6 +1,6 @@
 var settings = require("../settings");
-
-var mongoClient = require('mongodb').MongoClient;
+var mongo = require('mongodb');
+var mongoClient = mongo.MongoClient;
 var url = 'mongodb://' + settings.ip + ':' + settings.port + '/' + settings.name + '';
 mongoClient.connect(url, function (err, db) {
     if (err) {
@@ -47,10 +47,11 @@ function createDatabase() {
                     // load players from json and connecting them to the Club via ID
                     loadPlayers(playerCollection, clubs).then(function () {
 
-                        //TODO call CreateMatches with parameters i dont know
-                        createMatchesForBothLeagues(matchCollection, clubCollection).then(function () {
-                            db.close();
-                            console.log("Database Created");
+                        clubCollection.find().then(function(clubs){
+                            createMatchesForBothLeagues(matchCollection, clubs).then(function(){
+                                db.close();
+                                console.log("Database Created");
+                            })
                         });
                     });
                 });
@@ -61,7 +62,7 @@ function createDatabase() {
 
 function loadLeagues(leagueCollection) {
     var promises = [];
-    var promise1 = leagueCollection.insert({name: "1. Bundesliga"});
+    var promise1 = leagueCollection.insert({name: "1. Bundesliga",_id:1});
     promise1.then(function (result, err) {
         if (err) {
             console.log(err);
@@ -70,7 +71,7 @@ function loadLeagues(leagueCollection) {
 
     promises.push(promise1);
 
-    var promise2 = leagueCollection.insert({name: "2. Bundesliga"});
+    var promise2 = leagueCollection.insert({name: "2. Bundesliga",_id:2});
     promise2.then(function (result, err) {
         if (err) {
             console.log(err);
@@ -125,6 +126,8 @@ function loadPlayers(playerCollection, clubs) {
 
     var promises = [];
 
+    var map = [];
+
     playerJson.forEach(function (playerJson) {
 
         //if the player is in no club ignore him
@@ -146,7 +149,12 @@ function loadPlayers(playerCollection, clubs) {
                         clubId: club._id
                     };
 
-                    promises.push(playerCollection.insert(player))
+                    map[club._id.id] = map[club._id.id] === undefined ? 0 : map[club._id.id] +1;
+
+                    if(map[club._id.id] < 15){
+                        promises.push(playerCollection.insert(player))
+                    }
+
                 }
             }
         }
@@ -156,12 +164,15 @@ function loadPlayers(playerCollection, clubs) {
 }
 
 //TODO ggf. dynamisch machen indem man als Parameter noch die Liga angibt, sinnvoll? --> müsste dann beim Befüllen der DB zwei mal aufgerufen werden (einmal für die 1. und einmal für die 2. Liga)
-function createMatchesForBothLeagues(matchCollection, clubCollection) {
+function createMatchesForBothLeagues(matchCollection, clubs) {
+
+
+    var promise = [];
+
     var firstLeagueClubs = [];
     var secondLeagueClubs = [];
 
-    //separate clubs by league
-    clubCollection.forEach(function (club) {
+    clubs.forEach(function (club) {
         if (club.league === 1) {
             firstLeagueClubs.push(club);
         } else {
@@ -169,29 +180,18 @@ function createMatchesForBothLeagues(matchCollection, clubCollection) {
         }
     });
 
-    //create back and forth round
-    var firstArrayOfClubs = [];
-    var secondArrayOfClubs = [];
+    promise.push(createBackAndForthMatches(matchCollection, firstLeagueClubs));
 
-    splitClubs(firstArrayOfClubs, secondArrayOfClubs, firstLeagueClubs);
-    createBackAndForthMatches(matchCollection, firstArrayOfClubs, secondArrayOfClubs);
+    promise.push(createBackAndForthMatches(matchCollection, secondLeagueClubs));
 
-    splitClubs(firstArrayOfClubs, secondArrayOfClubs, secondLeagueClubs);
-    createBackAndForthMatches(matchCollection, firstArrayOfClubs, secondArrayOfClubs);
+    return Promise.all(promise)
 }
 
-function splitClubs(firstArrayOfClubs, secondArrayOfClubs, allClubs) {
-    firstArrayOfClubs.length = 0;
-    secondArrayOfClubs.length = 0;
-
-    for (i = 0; i === (allClubs.length / 2); i++) {
-        firstArrayOfClubs.push(allClubs.splice(Math.floor(Math.random() * (allClubs.length / 2) + 1), 1));
-    }
-    secondArrayOfClubs = allClubs;
-}
-
-function createBackAndForthMatches(matchCollection, firstArrayOfClubs, secondArrayOfClubs) {
+function createBackAndForthMatches(matchCollection, allClubs) {
     var leagueStartDate = new Date();
+
+
+    var promises = [];
 
     //Set start date (first saturday from now)
     if (leagueStartDate.getDay() < 6) {
@@ -203,20 +203,31 @@ function createBackAndForthMatches(matchCollection, firstArrayOfClubs, secondArr
         leagueStartDate.setMilliseconds(0);
     }
 
-    firstArrayOfClubs.forEach(function (firstClub) {
-        var forthMatchDate = new Date(leagueStartDate.getTime());
-        var backMatchDate = new Date(leagueStartDate.getTime() + (16 * 7 * 24 * 60 * 60 * 1000));
+    var matchdays = require("./matches.json");
 
-        secondArrayOfClubs.forEach(function (secondClub) {
-            if (firstClub._id !== secondClub._id) {
-                matchCollection.insert({homeClub: firstClub._id, guestClub: secondClub._id, date: forthMatchDate, league: firstClub.league});
-                forthMatchDate.setTime(forthMatchDate.getTime() + (7 * 24 * 60 * 60 * 1000));
+    var forthMatchDate = new Date(leagueStartDate.getTime());
+    matchdays.forEach(function(matchDay){
+        var spiele = [];
+        spiele.push(matchDay.spiel1);
+        spiele.push(matchDay.spiel2);
+        spiele.push(matchDay.spiel3);
+        spiele.push(matchDay.spiel4);
+        spiele.push(matchDay.spiel5);
+        spiele.push(matchDay.spiel6);
+        spiele.push(matchDay.spiel7);
+        spiele.push(matchDay.spiel8);
+        spiele.push(matchDay.spiel9);
 
-                matchCollection.insert({homeClub: secondClub._id, guestClub: firstClub._id, date: backMatchDate, league: secondClub.league});
-                backMatchDate.setTime(backMatchDate.getTime() + (7 * 24 * 60 * 60 * 1000));
-            }
-        })
+        spiele.forEach(function(spiel){
+            var homeClub = allClubs[spiel.mannschaft1-1];
+            var guestClub = allClubs[spiel.mannschaft2-1];
+            promises.push(matchCollection.insert({homeClub: homeClub._id, guestClub: guestClub._id, date: forthMatchDate, league: homeClub.league}));
+        });
+
+        forthMatchDate = new Date(forthMatchDate.getTime() + (7 * 24 * 60 * 60 * 1000));
     });
+
+    return Promise.all(promises);
 }
 
 String.prototype.contains = function (it) {

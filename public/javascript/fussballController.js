@@ -10,8 +10,8 @@ app.controller("LeagueController", function ($scope, $http, $location, $route) {
         }
     }
 
-    $http.get("http://localhost:8080/clubs/" + leagueId).then(function (response) {
-        $scope.data = response.data;
+    $http.get("http://localhost:8080/clubs/league/" + leagueId).then(function (response) {
+        $scope.clubs = response.data;
     });
 });
 
