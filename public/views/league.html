@@ -38,7 +38,7 @@
                 <div class="panel-body">
                     <table>
                         <tbody>
-                        <tr ng-repeat="match in matchDays[date]">
+                        <tr ng-repeat="match in matchDays[date.toLocaleDateString()]">
                             <td>
                                 <img src="{{clubs[match.homeClub].imageUrl}}" class="clubIcon"/><a href="/#/club/{{clubs[match.homeClub].name}}">{{clubs[match.homeClub].name}}</a>
                             </td>

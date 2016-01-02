@@ -35,10 +35,11 @@ app.controller("LeagueController", function ($scope, $http, $location, $route) {
 
         $scope.matchDays = {};
         $scope.matches.forEach(function (match) {
-            if($scope.matchDays[new Date(match.date)] === undefined){
-                $scope.matchDays[new Date(match.date)] = [match];
+            match.date = new Date(match.date);
+            if($scope.matchDays[match.date.toLocaleDateString()] === undefined){
+                $scope.matchDays[match.date.toLocaleDateString()] = [match];
             }else{
-                $scope.matchDays[new Date(match.date)].push(match);
+                $scope.matchDays[match.date.toLocaleDateString()].push(match);
             }
         });
 
