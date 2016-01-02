@@ -2,6 +2,8 @@ var settings = require("../settings");
 var mongo = require('mongodb');
 var mongoClient = mongo.MongoClient;
 var url = 'mongodb://' + settings.ip + ':' + settings.port + '/' + settings.name + '';
+var Chance = require("chance");
+var chance = new Chance();
 mongoClient.connect(url, function (err, db) {
     if (err) {
         console.log(err);
@@ -47,8 +49,8 @@ function createDatabase() {
                     // load players from json and connecting them to the Club via ID
                     loadPlayers(playerCollection, clubs).then(function () {
 
-                        clubCollection.find().then(function(clubs){
-                            createMatchesForBothLeagues(matchCollection, clubs).then(function(){
+                        clubCollection.find().then(function (clubs) {
+                            createMatchesForBothLeagues(matchCollection, clubs).then(function () {
                                 db.close();
                                 console.log("Database Created");
                             })
@@ -62,7 +64,7 @@ function createDatabase() {
 
 function loadLeagues(leagueCollection) {
     var promises = [];
-    var promise1 = leagueCollection.insert({name: "1. Bundesliga",_id:1});
+    var promise1 = leagueCollection.insert({name: "1. Bundesliga", _id: 1});
     promise1.then(function (result, err) {
         if (err) {
             console.log(err);
@@ -71,7 +73,7 @@ function loadLeagues(leagueCollection) {
 
     promises.push(promise1);
 
-    var promise2 = leagueCollection.insert({name: "2. Bundesliga",_id:2});
+    var promise2 = leagueCollection.insert({name: "2. Bundesliga", _id: 2});
     promise2.then(function (result, err) {
         if (err) {
             console.log(err);
@@ -106,7 +108,8 @@ function loadClubs(clubCollection, leagueId) {
                 points: 0,
                 scoredGoals: 0,
                 receivedGoals: 0,
-                imageUrl: "http:" + clubImages[club.id].logo40
+                imageUrl: "http:" + clubImages[club.id].logo40,
+                trainer: chance.last() + ", " + chance.first()
             };
             var promis = clubCollection.insert(databaseClub).then(function (result, err) {
                 if (err) {
@@ -149,9 +152,9 @@ function loadPlayers(playerCollection, clubs) {
                         clubId: club._id
                     };
 
-                    map[club._id.id] = map[club._id.id] === undefined ? 0 : map[club._id.id] +1;
+                    map[club._id.id] = map[club._id.id] === undefined ? 0 : map[club._id.id] + 1;
 
-                    if(map[club._id.id] < 15){
+                    if (map[club._id.id] < 15) {
                         promises.push(playerCollection.insert(player))
                     }
 
@@ -206,7 +209,7 @@ function createBackAndForthMatches(matchCollection, allClubs) {
     var matchdays = require("./matches.json");
 
     var forthMatchDate = new Date(leagueStartDate.getTime());
-    matchdays.forEach(function(matchDay){
+    matchdays.forEach(function (matchDay) {
         var spiele = [];
         spiele.push(matchDay.spiel1);
         spiele.push(matchDay.spiel2);
@@ -218,10 +221,17 @@ function createBackAndForthMatches(matchCollection, allClubs) {
         spiele.push(matchDay.spiel8);
         spiele.push(matchDay.spiel9);
 
-        spiele.forEach(function(spiel){
-            var homeClub = allClubs[spiel.mannschaft1-1];
-            var guestClub = allClubs[spiel.mannschaft2-1];
-            promises.push(matchCollection.insert({homeClub: homeClub._id, guestClub: guestClub._id, date: forthMatchDate, league: homeClub.league}));
+        spiele.forEach(function (spiel) {
+            var homeClub = allClubs[spiel.mannschaft1 - 1];
+            var guestClub = allClubs[spiel.mannschaft2 - 1];
+            promises.push(matchCollection.insert({
+                homeClub: homeClub._id,
+                guestClub: guestClub._id,
+                date: forthMatchDate,
+                league: homeClub.league,
+                homeGoals : [],
+                guestGoals : []
+            }));
         });
 
         forthMatchDate = new Date(forthMatchDate.getTime() + (7 * 24 * 60 * 60 * 1000));

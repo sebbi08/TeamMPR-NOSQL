@@ -40,9 +40,11 @@ app.get("/clubs/league/:id", function (req, res) {
     });
 });
 
-app.get("/clubs/:id", function (req, res) {
+
+
+app.get("/clubs/:name", function (req, res) {
     var clubCollection = db.get("Club");
-    clubCollection.findById(req.params.id, {}, function (err, data) {
+    clubCollection.find({name : req.params.name}, {}, function (err, data) {
         if (err) {
             console.log(err);
         } else {
@@ -62,10 +64,33 @@ app.get("/players", function (req, res) {
     });
 });
 
+app.get("/players/club/:id", function (req, res) {
+    var collection = db.get("Player");
+    collection.find({clubId: new mongo.ObjectID(req.params.id)}, {}, function (err, data) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(data);
+        }
+    });
+});
+
 
 app.get("/matches", function (req, res) {
-    var collection = db.get("Matche");
+    var collection = db.get("Match");
     collection.find({}, {}, function (err, data) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(data);
+        }
+    });
+});
+
+app.get("/matches/league/:id", function (req, res) {
+    var collection = db.get("Match");
+    var id = parseInt(req.params.id);
+    collection.find({league : id}, {}, function (err, data) {
         if (err) {
             console.log(err);
         } else {
@@ -96,23 +121,6 @@ app.get("/players", function (req, res) {
     });
 });
 
-//Todo maybe delete res.send ... is this method needed??
-//Answer TODO no is not needet but normaly u give a response if the opersation was succesfull or not and if not provide an error
-/*
- app.post('/players', function (req, res) {
- var newPlayer = {"name": req.body.name,"surName": req.body.surName,"scoredGoals":"","dateOfBirth": req.body.dateOfBirth};
- var players = footballDB.collection('Player');
-
- players.save(newPlayer, function (err, result) {
- if (err) {
- console.log('error: %j', err.message);
- } else {
- //console.log('result: %j', result._id);
- res.send(result._id);
- }
- });
- });
- */
 
 
 app.get("/leagues", function (req, res) {
