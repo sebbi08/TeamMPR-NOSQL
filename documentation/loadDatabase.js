@@ -108,6 +108,8 @@ function loadClubs(clubCollection, leagueId) {
                 points: 0,
                 scoredGoals: 0,
                 receivedGoals: 0,
+                won:0,
+                lost:0,
                 imageUrl: "http:" + clubImages[club.id].logo40,
                 trainer: chance.last() + ", " + chance.first()
             };

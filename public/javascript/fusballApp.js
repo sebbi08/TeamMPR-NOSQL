@@ -1,1 +1,1 @@
-var app = angular.module("FusballApp", ['ngRoute']);
+var app = angular.module("FusballApp", ['ngRoute','ui.bootstrap']);

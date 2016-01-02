@@ -1,4 +1,52 @@
 .clubIcon{
     width: 20px;
-    /*height: 20px;*/
+}
+
+.clubIconInClubPage{
+    width: 150px;
+}
+
+.matchesContainer{
+    margin-top: 10px;
+    height: 80vh;
+}
+body { padding-top: 100px; }
+
+.scroll{
+    overflow: auto;
+}
+
+.match-middel-cell{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+.track3 {
+    width: 10px;
+    background: rgba(0, 0, 0, 0);
+    border-radius: 10px;
+    -webkit-transition: background 250ms linear;
+    transition: background 250ms linear;
+}
+
+.track3:hover,
+.track3.dragging {
+    background: #d9d9d9;
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.handle3 {
+    width: 7px;
+    right: 0;
+    background: #999;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 7px;
+    -webkit-transition: width 250ms;
+    transition: width 250ms;
+}
+
+.track3:hover .handle3,
+.track3.dragging .handle3 {
+    width: 10px;
 }

@@ -10,12 +10,11 @@ app.config(function ($routeProvider) {
         async: false,
         success:function(leagues){
             leagues.forEach(function(league,index){
-                console.log(index + ". LOG");
                 if(index === 0){
                     redirectTo = "/league/" + (index + 1);
                 }
                 provider = provider.when("/league/" + (index + 1), {
-                    templateUrl: '/views/home.html',
+                    templateUrl: '/views/league.html',
                     controller: "LeagueController",
                     name: league.name,
                     id: league._id
@@ -24,8 +23,10 @@ app.config(function ($routeProvider) {
         }
     });
 
-    provider.otherwise({
+    provider.when("/club/:name",{
+        templateUrl: '/views/club.html',
+        controller: 'ClubController'
+    }).otherwise({
         redirectTo: redirectTo
-    });
-    console.log("LAST LOG")
+    })
 });

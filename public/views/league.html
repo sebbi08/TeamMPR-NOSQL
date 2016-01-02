@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="container">
+        <ul class="nav nav-tabs">
+            <li role="presentation" ng-class="{active : table}" ng-click="activateTable()"><a class="btn">Table</a></li>
+            <li role="presentation" ng-class="{active : spielPlan}" ng-click="activateSpielplan()"><a class="btn">Spiel Plan</a></li>
+        </ul>
+
+
+    <table class="table table-stiped" ng-show="table">
+        <tr>
+            <th>#</th>
+            <th></th>
+            <th>Name</th>
+            <th>Goals</th>
+            <th>Points</th>
+        </tr>
+        <tr ng-repeat="(id,club) in clubs | orderBy : order">
+            <td>{{$index+1}}</td>
+            <td><img src="{{club.imageUrl}}" class="clubIcon"/></td>
+            <td><a href="/#/club/{{club.name}}">{{club.name}}</a></td>
+            <td>{{club.scoredGoals}} : {{club.receivedGoals}}</td>
+            <td>{{club.points}}</td>
+        </tr>
+    </table>
+
+    <div ng-show="spielPlan" class="matchesContainer scroll">
+        <div ng-repeat="date in dates">
+            <div class="panel panel-default"
+                 ng-class="{'panel-success' : date.getTime() <= today.getTime(),'panel-danger' : date.getTime() > today.getTime()}">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{date.toLocaleDateString()}}</h3>
+                </div>
+                <div class="panel-body">
+                    <table>
+                        <tbody>
+                        <tr ng-repeat="match in matchDays[date]">
+                            <td>
+                                <img src="{{clubs[match.homeClub].imageUrl}}" class="clubIcon"/><a href="/#/club/{{clubs[match.homeClub].name}}">{{clubs[match.homeClub].name}}</a>
+                            </td>
+                            <td class="match-middel-cell">
+                                {{match.homeGoals.length}}:{{match.guestGoals.length}}
+                            </td>
+                            <td>
+                                <img src="{{clubs[match.guestClub].imageUrl}}" class="clubIcon"/><a href="/#/club/{{clubs[match.guestClub].name}}">{{clubs[match.guestClub].name}}</a>
+                            </td>
+                            <td>
+                                <div>
+                                    {{match.date.toLocaleTimeString()}}
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
