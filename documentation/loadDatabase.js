@@ -233,6 +233,7 @@ function createBackAndForthMatches(matchCollection, allClubs) {
                 league: homeClub.league,
                 homeGoals : [],
                 guestGoals : []
+
             }));
         });
 
