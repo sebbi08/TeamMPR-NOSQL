@@ -110,6 +110,7 @@ function loadClubs(clubCollection, leagueId) {
                 receivedGoals: 0,
                 won:0,
                 lost:0,
+                draw:0,
                 imageUrl: "http:" + clubImages[club.id].logo40,
                 trainer: chance.last() + ", " + chance.first()
             };
@@ -168,7 +169,6 @@ function loadPlayers(playerCollection, clubs) {
     return Promise.all(promises)
 }
 
-//TODO ggf. dynamisch machen indem man als Parameter noch die Liga angibt, sinnvoll? --> müsste dann beim Befüllen der DB zwei mal aufgerufen werden (einmal für die 1. und einmal für die 2. Liga)
 function createMatchesForBothLeagues(matchCollection, clubs) {
 
 
@@ -232,8 +232,8 @@ function createBackAndForthMatches(matchCollection, allClubs) {
                 date: forthMatchDate,
                 league: homeClub.league,
                 homeGoals : [],
-                guestGoals : []
-
+                guestGoals : [],
+                played: false
             }));
         });
 

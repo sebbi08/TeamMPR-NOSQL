@@ -10,16 +10,27 @@ var db = require('monk')(settings.ip + ':' + settings.port + '/' + settings.name
 var calcService = require("../seasonCalculationService");
 
 app.use(bodyParser.json());
+
 var lastCallDate = null;
 
-app.all("/leagues", function (req, res, next) {
+
+var date = new Date();
+
+app.all("/*", function (req, res, next) {
     //TODO Calculate Matches that should have been played
     if (lastCallDate === null || ((lastCallDate.getTime() - new Date().getTime()) > 300000)) {
-        calcService.calculateMatches();
+        calcService.calculateMatches(new Date());
         lastCallDate = new Date();
     }
-    console.log("Call to " + req.path);
+    //console.log("Call to " + req.path);
     next()
+});
+
+app.get("/nextWeak",function(req,res){
+    date = new Date(date.getTime() + (7 * 24 * 60 * 60 * 1000));
+
+    calcService.calculateMatches(date);
+    res.send("OK")
 });
 
 app.get("/clubs", function (req, res) {

@@ -19,7 +19,7 @@
             <th>Goals</th>
             <th>Points</th>
         </tr>
-        <tr ng-repeat="(id,club) in clubs | orderBy : order">
+        <tr ng-repeat="(id,club) in clubs | orderTeams">
             <td>{{$index+1}}</td>
             <td><img src="{{club.imageUrl}}" class="clubIcon"/></td>
             <td><a href="/#/club/{{club.name}}">{{club.name}}</a></td>
@@ -31,7 +31,7 @@
     <div ng-show="spielPlan" class="matchesContainer scroll">
         <div ng-repeat="date in dates">
             <div class="panel panel-default"
-                 ng-class="{'panel-success' : date.getTime() <= today.getTime(),'panel-danger' : date.getTime() > today.getTime()}">
+                 ng-class="{'panel-success' : allMatchesPlayed(date),'panel-danger' : !allMatchesPlayed(date)}">
                 <div class="panel-heading">
                     <h3 class="panel-title">{{date.toLocaleDateString()}}</h3>
                 </div>

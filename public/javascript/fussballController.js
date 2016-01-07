@@ -86,6 +86,13 @@ app.controller("LeagueController", function ($scope, $http, $location, $route) {
         });
     })
 
+    $scope.allMatchesPlayed = function(date){
+        var result = true;
+        $scope.matchDays[date.toLocaleDateString()].forEach(function(match){
+            if(!match.played) result = false;
+        });
+        return result;
+    }
 });
 
 app.controller("ClubController", function ($scope, $http, $routeParams) {
@@ -93,13 +100,14 @@ app.controller("ClubController", function ($scope, $http, $routeParams) {
         $scope.club = club.data[0];
         $http.get("http://localhost:8080/players/club/" + club.data[0]._id).then(function (player) {
             $scope.players = player.data;
+            
         })
     });
 
     $scope.playerVisible = true;
 });
 
-app.controller("HeaderController", function ($scope, $location, $route) {
+app.controller("HeaderController", function ($scope, $location, $route,$http) {
     var routes = [];
     angular.forEach($route.routes, function (route, path) {
         if (route.name) {
@@ -113,4 +121,10 @@ app.controller("HeaderController", function ($scope, $location, $route) {
     $scope.activeRoute = function (route) {
         return route.path === $location.path();
     };
+
+    $scope.nextWeak = function(){
+        $http.get("http://localhost:8080/nextWeak")
+    }
+
 });
+

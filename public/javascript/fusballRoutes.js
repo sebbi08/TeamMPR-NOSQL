@@ -9,6 +9,7 @@ app.config(function ($routeProvider) {
         url: "http://localhost:8080/leagues",
         async: false,
         success:function(leagues){
+            leagues.sort(function(a,b){return a._id-b._id});
             leagues.forEach(function(league,index){
                 if(index === 0){
                     redirectTo = "/league/" + (index + 1);
