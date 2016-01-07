@@ -27,7 +27,7 @@
                                 <th>SureName</th>
                                 <th>Goals</th>
                             </tr>
-                            <tr ng-repeat="player in players | orderBy : scoredGoals">
+                            <tr ng-repeat="player in players | orderBy : '-scoredGoals'">
                                 <td>{{player.name}}</td>
                                 <td>{{player.sureName}}</td>
                                 <td>{{player.scoredGoals}}</td>

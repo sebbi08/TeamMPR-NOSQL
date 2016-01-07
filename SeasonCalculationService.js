@@ -5,7 +5,6 @@ var db = require('monk')(settings.ip + ':' + settings.port + '/' + settings.name
 
 
 exports.calculateMatches = function (date) {
-    var savedMatches = 0;
     console.log("calculateMatches called");
     var promises = [];
     var matchCollection = db.get("Match");
@@ -45,7 +44,6 @@ exports.calculateMatches = function (date) {
                                         console.log(err);
                                     }
                                 });
-                                console.log(savedMatches++ + "Matches Saved");
                             });
 
                         });
