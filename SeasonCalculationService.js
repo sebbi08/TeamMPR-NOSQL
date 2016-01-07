@@ -5,7 +5,7 @@ var db = require('monk')(settings.ip + ':' + settings.port + '/' + settings.name
 
 
 exports.calculateMatches = function (date) {
-    console.log("calculateMatches called");
+    //console.log("calculateMatches called");
     var promises = [];
     var matchCollection = db.get("Match");
     var actualDate = date;
@@ -38,7 +38,7 @@ exports.calculateMatches = function (date) {
 
                             addPoints(match, homeGoals, guestGoals, homeClub, guestClub).then(function () {
                                 //console.log("addPoints called");
-                                //Er scheint hier nen Problem zu haben da er es nicht in die DB schreibt.
+                                
                                 matchCollection.updateById(match._id, match, function (err, doc) {
                                     if (err) {
                                         console.log(err);
