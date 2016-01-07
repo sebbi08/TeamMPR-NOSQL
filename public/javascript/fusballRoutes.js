@@ -27,6 +27,9 @@ app.config(function ($routeProvider) {
     provider.when("/club/:name",{
         templateUrl: '/views/club.html',
         controller: 'ClubController'
+    }).when("/match/:id",{
+        templateUrl: '/views/match.html',
+        controller: 'MatchController'
     }).otherwise({
         redirectTo: redirectTo
     })

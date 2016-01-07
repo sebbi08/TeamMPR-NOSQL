@@ -107,6 +107,50 @@ app.controller("ClubController", function ($scope, $http, $routeParams) {
     $scope.playerVisible = true;
 });
 
+app.controller("MatchController", function ($scope, $http, $routeParams) {
+    var promises = [];
+    $http.get("http://localhost:8080/matches/" + $routeParams.id).then(function (match) {
+        var matchForScope = match.data;
+        $http.get("http://localhost:8080/clubs/id/" + matchForScope.homeClub).then(function (club) {
+            matchForScope.homeClub = club.data;
+            promises.push($http.get("http://localhost:8080/players/club/" + club.data._id).then(function (player) {
+                var homeGoals = [];
+                player.data.forEach(function(player){
+                    matchForScope.homeGoals.forEach(function(playerId){
+                        if(playerId == player._id){
+                            homeGoals.push(player);
+                        }
+                    })
+                });
+                matchForScope.homeGoals = homeGoals;
+                Promise.all(promises).then(function(){
+                    $scope.match = matchForScope;
+                })
+            }))
+        });
+
+        $http.get("http://localhost:8080/clubs/id/" + matchForScope.guestClub).then(function (club) {
+            matchForScope.guestClub = club.data;
+            promises.push($http.get("http://localhost:8080/players/club/" + club.data._id).then(function (player) {
+                var guestGoals = [];
+                player.data.forEach(function(player){
+                    matchForScope.guestGoals.forEach(function(playerId){
+                        if(playerId == player._id){
+                            guestGoals.push(player);
+                        }
+                    })
+                });
+                matchForScope.guestGoals = guestGoals;
+                Promise.all(promises).then(function(){
+                    $scope.match = matchForScope;
+                })
+            }))
+        });
+    });
+
+    $scope.playerVisible = true;
+});
+
 app.controller("HeaderController", function ($scope, $location, $route,$http) {
     var routes = [];
     angular.forEach($route.routes, function (route, path) {

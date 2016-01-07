@@ -43,7 +43,9 @@
                                 <img src="{{clubs[match.homeClub].imageUrl}}" class="clubIcon"/><a href="/#/club/{{clubs[match.homeClub].name}}">{{clubs[match.homeClub].name}}</a>
                             </td>
                             <td class="match-middel-cell">
-                                {{match.homeGoals.length}}:{{match.guestGoals.length}}
+                                <a href="/#/match/{{match._id}}">
+                                    {{match.homeGoals.length}}:{{match.guestGoals.length}}
+                                </a>
                             </td>
                             <td>
                                 <img src="{{clubs[match.guestClub].imageUrl}}" class="clubIcon"/><a href="/#/club/{{clubs[match.guestClub].name}}">{{clubs[match.guestClub].name}}</a>

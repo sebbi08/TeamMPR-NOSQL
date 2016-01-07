@@ -148,10 +148,9 @@ function loadPlayers(playerCollection, clubs) {
                     var age = Math.floor(Math.random() * (36 - 16) + 16);
 
                     var player = {
-                        name: playerJson.name.split(" ")[0],
+                        name: playerJson.name,
                         age: age,
                         scoredGoals: 0,
-                        sureName: playerJson.name.split(" ")[1],
                         clubId: club._id
                     };
 

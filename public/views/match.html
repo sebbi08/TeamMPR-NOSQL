@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="container playerTable">
+    <div class="jumbotron ">
+        <div class="row">
+            <div class="col-lg-5">
+                <h3><img src="{{match.homeClub.imageUrl}}" class="clubIconInClubPage"/> {{match.homeClub.name}} </h3>
+                <p>Won/Lose/Draw : {{match.homeClub.won+"/"+match.homeClub.lost+"/"+match.homeClub.draw}}</p>
+                <p>Scored Goals : {{match.homeClub.scoredGoals}}</p>
+                <p>Received Goals : {{match.homeClub.receivedGoals}}</p>
+                <p>Points : {{match.homeClub.points}}</p>
+                <p>Trainer : {{match.homeClub.trainer}}</p>
+                <p>Goals :</p>
+                <div ng-repeat="player in match.homeGoals">
+                    <p>{{player.name}}</p>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <h1 class="text-center">{{match.homeGoals.length}}:{{match.guestGoals.length}}</h1>
+            </div>
+            <div class="col-lg-5">
+                <h3><img src="{{match.guestClub.imageUrl}}" class="clubIconInClubPage"/> {{match.guestClub.name}} </h3>
+
+                <p>Won/Lose/Draw : {{match.guestClub.won+"/"+match.guestClub.lost+"/"+match.guestClub.draw}}</p>
+                <p>Scored Goals : {{match.guestClub.scoredGoals}}</p>
+                <p>Received Goals : {{match.guestClub.receivedGoals}}</p>
+                <p>Points : {{match.guestClub.points}}</p>
+                <p>Trainer : {{match.guestClub.trainer}}</p>
+                <p>Goals : </p>
+                <div ng-repeat="player in match.guestGoals">
+                    <p>{{player.name}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

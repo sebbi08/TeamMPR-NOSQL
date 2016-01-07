@@ -24,12 +24,10 @@
                         <table class="table table-stiped">
                             <tr>
                                 <th>Name</th>
-                                <th>SureName</th>
                                 <th>Goals</th>
                             </tr>
                             <tr ng-repeat="player in players | orderBy : '-scoredGoals'">
                                 <td>{{player.name}}</td>
-                                <td>{{player.sureName}}</td>
                                 <td>{{player.scoredGoals}}</td>
                             </tr>
                         </table>
