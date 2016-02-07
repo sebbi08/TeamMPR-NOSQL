@@ -4,30 +4,55 @@ var settings = require('./settings');
 var db = require('monk')(settings.ip + ':' + settings.port + '/' + settings.name);
 
 exports.calculateMatches = function () {
-    //DEBUG: console.log("calculateMatches called");
+    console.log("calculateMatches called");
     var promises = [];
     var matchCollection = db.get("Match");
     var actualDate = new Date();
 
     matchCollection.find().then(function (matches) {
-        //DEBUG: console.log("matchCollection find() called");
+        console.log("matchCollection find() called");
         matches.forEach(function (match) {
-            if (match.date <= actualDate && match.played === false) {
-                var homeGoals = Math.floor(Math.random() * (5 - 0));
-                var guestGoals = Math.floor(Math.random() * (5 - 0));
+            if (match.date.getTime() <= actualDate.getTime() && match.played === false) {
+                var homeGoals = Math.floor(Math.random() * 5);
+                var guestGoals = Math.floor(Math.random() * 5);
+                var playerCollection = db.get("Player");
 
-                addGoals(match, homeGoals, guestGoals).then(function (match, homeGoals, guestGoals) {
-                    addPoints(match, homeGoals, guestGoals).then(function (match) {
-                        match.played = true;
-                        //Er scheint hier nen Problem zu haben da er es nicht in die DB schreibt.
-                        promises.push(matchCollection.updateById(match._id, match, function (err, doc) {
+                playerCollection.find().then(function (allplayer) {
+                    match = addGoals(match, homeGoals, guestGoals, allplayer);
+                    console.log("addGoals called");
+                    var clubCollection = db.get("Club");
+                    clubCollection.findById(match.homeClub, {}, function (err, club) {
+                        if (err) {
+                            console.log(err);
+                            return;
+                        }
+                        var homeClub = club;
+
+                        clubCollection.findById(match.guestClub, {}, function (err, club) {
                             if (err) {
                                 console.log(err);
                                 return;
                             }
-                        }));
+                            var guestClub = club;
+                            addPoints(match, homeGoals, guestGoals, homeClub, guestClub).then(function () {
+                                console.log("addPoints called");
+                                match.played = true;
+                                //Er scheint hier nen Problem zu haben da er es nicht in die DB schreibt.
+                                matchCollection.updateById(match._id, match, function (err, doc) {
+                                    if (err) {
+                                        console.log(err);
+                                        return;
+                                    }
+                                });
+                            });
+
+                        });
                     });
-                });
+
+                })
+
+
+
 
 
 
@@ -44,89 +69,74 @@ exports.calculateMatches = function () {
     });
 };
 
-function addPoints(match, homeGoals, guestGoals) {
+function addPoints(match, homeGoals, guestGoals, homeClub, guestClub) {
     //console.log("addPoints called");
     var clubCollection = db.get("Club");
-    var homeClub;
-    var guestClub;
 
+    var promises = []
     //console.log(match.homeClub);
 
-    clubCollection.findById(match.homeClub, {}, function (err, club) {
-        if (err) {
-            console.log(err);
-            return;
-        }
-        homeClub = club;
 
-        clubCollection.findById(match.guestClub, {}, function (err, club) {
-            if (err) {
-                console.log(err);
-                return;
-            }
-            guestClub = club;
-//            console.log(homeClub.points);
-//            console.log("Points showed");
 
-            if (homeGoals - guestGoals > 0) {
-
-                clubCollection.updateById(match.homeClub, {
-                    points: match.homeClub.points + 3,
-                    scoredGoals: match.homeClub.scoredGoals + homeGoals,
-                    receivedGoals: match.homeClub.receivedGoals + guestGoals,
-                    won: match.homeClub.won + 1,
-                });
-                clubCollection.updateById(match.guestClub, {
-                    scoredGoals: match.guestClub.scoredGoals + guestGoals,
-                    receivedGoals: match.guestClub.receivedGoals + homeGoals,
-                    lost: match.guestClub.lost + 1,
-                });
-            } else if (homeGoals - guestGoals < 0) {
-                clubCollection.updateById(match.homeClub, {
-                    scoredGoals: match.homeClub.scoredGoals + homeGoals,
-                    receivedGoals: match.homeClub.receivedGoals + guestGoals,
-                });
-                clubCollection.updateById(match.guestClub, {
-                    points: match.homeClub.points + 3,
-                    scoredGoals: match.guestClub.scoredGoals + homeGoals,
-                    receivedGoals: match.guestClub.receivedGoals + guestGoals,
-                    won: match.guestClub.lost + 1,
-                });
-            } else {
-                clubCollection.updateById(match.homeClub, {
-                    points: match.homeClub.points + 1,
-                    scoredGoals: match.homeClub.scoredGoals + homeGoals,
-                    receivedGoals: match.homeClub.receivedGoals + guestGoals,
-                });
-                clubCollection.updateById(match.guestClub, {
-                    points: match.homeClub.points + 1,
-                    scoredGoals: match.guestClub.scoredGoals + guestGoals,
-                    receivedGoals: match.guestClub.receivedGoals + homeGoals,
-                });
-            }
-        });
-    });
+    if (homeGoals - guestGoals > 0) {
+        promises.push(clubCollection.updateById(match.homeClub, {
+            points: match.homeClub.points + 3,
+            scoredGoals: match.homeClub.scoredGoals + homeGoals,
+            receivedGoals: match.homeClub.receivedGoals + guestGoals,
+            won: match.homeClub.won + 1
+        }));
+        promises.push(clubCollection.updateById(match.guestClub, {
+            scoredGoals: match.guestClub.scoredGoals + guestGoals,
+            receivedGoals: match.guestClub.receivedGoals + homeGoals,
+            lost: match.guestClub.lost + 1
+        }));
+    } else if (homeGoals - guestGoals < 0) {
+        promises.push(clubCollection.updateById(match.homeClub, {
+            scoredGoals: match.homeClub.scoredGoals + homeGoals,
+            receivedGoals: match.homeClub.receivedGoals + guestGoals,
+            lost: match.homeClub.lost + 1
+        }));
+        promises.push(clubCollection.updateById(match.guestClub, {
+            points: match.homeClub.points + 3,
+            scoredGoals: match.guestClub.scoredGoals + homeGoals,
+            receivedGoals: match.guestClub.receivedGoals + guestGoals,
+            won: match.guestClub.won + 1
+        }));
+    } else {
+        promises.push(clubCollection.updateById(match.homeClub, {
+            points: match.homeClub.points + 1,
+            scoredGoals: match.homeClub.scoredGoals + homeGoals,
+            receivedGoals: match.homeClub.receivedGoals + guestGoals,
+            draw: match.homeClub.draw + 1
+        }));
+        promises.push(clubCollection.updateById(match.guestClub, {
+            points: match.homeClub.points + 1,
+            scoredGoals: match.guestClub.scoredGoals + guestGoals,
+            receivedGoals: match.guestClub.receivedGoals + homeGoals,
+            draw: match.guestClub.draw + 1
+        }));
+    }
+    return Promise.all(promises);
 }
 
-function addGoals(match, homeGoals, guestGoals) {
-    var playerCollection = db.get("Player");
+function addGoals(match, homeGoals, guestGoals, allPlayers) {
     var allPlayers;
     var playersInHomeClub = {};
     var playersInGuestClub = {};
 
-    playerCollection.find().then(function (allPlayers) {
 
-        allPlayers.forEach(function (player) {
-            if (allPlayers.clubId === match.homeClub && homeGoals > 0) {
-                playersInHomeClub.push(player);
-            } else if (allPlayers.clubId === match.guestClub && guestGoals > 0) {
-                playersInGuestClub.push(player);
-            }
-        });
-
-        choosePlayerAndAddPlayerScore(match, true, homeGoals, playersInHomeClub);
-        choosePlayerAndAddPlayerScore(match, false, guestGoals, playersInGuestClub);
+    allPlayers.forEach(function (player) {
+        if (player.clubId === match.homeClub && homeGoals > 0) {
+            playersInHomeClub.push(player);
+        } else if (player.clubId === match.guestClub && guestGoals > 0) {
+            playersInGuestClub.push(player);
+        }
     });
+
+    match = choosePlayerAndAddPlayerScore(match, true, homeGoals, playersInHomeClub);
+    match = choosePlayerAndAddPlayerScore(match, false, guestGoals, playersInGuestClub);
+
+    return match
 
 }
 
@@ -143,4 +153,5 @@ function choosePlayerAndAddPlayerScore(match, isPlayerInHomeClub, goals, players
             match.guestGoals.push(playersInClub[playerNumberInArray]._id);
         }
     }
+    return match;
 }
