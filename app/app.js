@@ -7,13 +7,13 @@ var settings = require('../settings');
 var mongo = require('mongodb');
 
 var db = require('monk')(settings.ip + ':' + settings.port + '/' + settings.name);
-
+var calcService = require("../seasonCalculationService");
 
 app.use(bodyParser.json());
 
 app.all("/*", function (req, res, next) {
-    //TODO Calculate Matches that soud have been played
-    //calculateMatches();
+    //TODO Calculate Matches that should have been played
+    calcService.calculateMatches();
     console.log("Call to " + req.path);
     next()
 });
@@ -83,6 +83,7 @@ app.get("/matches", function (req, res) {
         } else {
             res.json(data);
         }
+        
     });
 });
 
